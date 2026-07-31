@@ -336,6 +336,10 @@ export function App() {
             <p>
               Let’s create an unforgettable musical journey for your audience.
             </p>
+            <a className="booking-email" href="mailto:info@arohana.nz">
+              <span>Booking enquiries</span>
+              info@arohana.nz
+            </a>
             <button className="primary-action" onClick={openBooking}>
               Start a conversation <ArrowRight weight="light" />
             </button>

@@ -161,8 +161,11 @@ footer button:focus-visible {
 .header-booking {
   display: inline-flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
+  justify-self: end;
   gap: 10px;
+  padding: 10px 16px;
+  border: 1px solid currentColor;
   color: var(--copper-bright);
 }
 
@@ -842,20 +845,47 @@ footer button:focus-visible {
 
 .booking-section h2 {
   margin: 16px 0 22px;
-  font-size: clamp(66px, 7.4vw, 118px);
-  line-height: 0.86;
+  font-size: clamp(54px, 5.7vw, 90px);
+  line-height: 0.9;
 }
 
 .booking-section p {
-  margin-bottom: 32px;
+  margin-bottom: 18px;
   color: var(--muted);
+}
+
+.booking-email {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  width: fit-content;
+  margin-bottom: 28px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid rgba(232, 164, 110, 0.48);
+  color: var(--paper);
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+
+.booking-email span {
+  color: var(--copper-bright);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.booking-email:hover,
+.booking-email:focus-visible {
+  border-color: var(--copper-bright);
+  color: var(--copper-bright);
 }
 
 .booking-mark {
   position: relative;
   justify-self: end;
-  width: min(520px, 42vw);
-  height: 360px;
+  width: min(390px, 31vw);
+  height: 280px;
   overflow: hidden;
 }
 
@@ -1298,13 +1328,13 @@ footer button {
   }
 
   .booking-section h2 {
-    font-size: clamp(62px, 19vw, 90px);
+    font-size: clamp(52px, 15vw, 72px);
   }
 
   .booking-mark {
     justify-self: center;
-    width: min(520px, 110vw);
-    height: 360px;
+    width: min(380px, 92vw);
+    height: 270px;
   }
 
   footer {
