@@ -2,6 +2,8 @@
 
 Official website for Arohana, a Jazz–Carnatic fusion band from Aotearoa New Zealand.
 
+Live site: [arohana.nz](https://arohana.nz)
+
 ## Development
 
 ```sh
@@ -16,7 +18,7 @@ npm run build
 npm run test:sites
 ```
 
-The public site deploys automatically from the `main` branch through GitHub Pages.
+The public site deploys automatically from the `main` branch through GitHub Pages. Cloudflare manages DNS and HTTPS for `arohana.nz`; `www.arohana.nz` redirects to the apex domain.
 
 ## Adding music later
 

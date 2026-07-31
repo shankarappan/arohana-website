@@ -22,6 +22,12 @@ the zones available to it. It never prints the token or DNS record values.
 - `arohana.nz` — active, full zone, Free plan
 - `mokshabase.com` — active, full zone, Free plan
 
+## Arohana production routing
+
+- `arohana.nz` is proxied through Cloudflare to GitHub Pages.
+- `www.arohana.nz` is proxied through Cloudflare and redirects to `https://arohana.nz`.
+- Cloudflare Universal SSL is active for the apex and wildcard hostnames.
+
 At the time of verification, the supplied token could read zones, DNS records,
 and zone settings. It could not access Pages projects, Workers scripts, R2
 buckets, or its own policy details.

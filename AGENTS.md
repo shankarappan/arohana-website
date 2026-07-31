@@ -14,3 +14,6 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Preserve the cinematic charcoal-and-copper art direction, editorial serif display type, tactile instrument photography, restrained motion, and clear listen/booking pathways.
 - Artist portraits, individual profiles, final audio masters, social URLs, and the preferred booking email are intentionally deferred until the band supplies them.
 - Treat WOMEX 2025 as a past date, not an upcoming event.
+- The public source repository is `https://github.com/shankarappan/arohana-website`.
+- Production is published from `main` through GitHub Pages at `https://arohana.nz`; Cloudflare manages DNS and edge HTTPS, and `https://www.arohana.nz` redirects to the apex domain.
+- Future song files should use `public/audio/` with web-ready compressed formats; keep original masters outside the public repository.
