@@ -12,6 +12,7 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 
 - The selected visual target is `design-reference/option-1.png`.
 - Preserve the cinematic charcoal-and-copper art direction, editorial serif display type, tactile instrument photography, restrained motion, and clear listen/booking pathways.
+- Keep the full Arohana title mark prominent in the hero while preserving breathing room around the editorial headline.
 - Artist portraits, individual profiles, final audio masters, and social URLs are intentionally deferred until the band supplies them.
 - Use `info@arohana.nz` for public booking enquiries.
 - Treat WOMEX 2025 as a past date, not an upcoming event.

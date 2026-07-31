@@ -230,9 +230,9 @@ footer button:focus-visible {
 
 .hero-title-image {
   display: block;
-  width: min(480px, 43vw);
+  width: min(560px, 48vw);
   height: auto;
-  margin: -42px 0 -26px;
+  margin: -48px 0 -28px;
   filter: none;
 }
 
@@ -1126,7 +1126,7 @@ footer button {
   }
 
   .hero-title-image {
-    width: 440px;
+    width: min(500px, 58vw);
   }
 
   .story-grid {
@@ -1180,8 +1180,8 @@ footer button {
   }
 
   .hero-title-image {
-    width: min(410px, 94vw);
-    margin: -30px 0 -18px;
+    width: min(440px, 98vw);
+    margin: -32px 0 -20px;
   }
 
   .hero h1 {
