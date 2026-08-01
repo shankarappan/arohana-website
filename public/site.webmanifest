@@ -1,0 +1,21 @@
+{
+  "name": "Arohana — Jazz Carnatic Fusion",
+  "short_name": "Arohana",
+  "description": "Jazz–Carnatic fusion from Aotearoa New Zealand.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#090a0b",
+  "theme_color": "#090a0b",
+  "icons": [
+    {
+      "src": "/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
