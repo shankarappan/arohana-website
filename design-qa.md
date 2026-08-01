@@ -3,9 +3,9 @@
 ## Evidence
 
 - Source visual truth: `design-reference/option-1.png` (864 × 1821 px), plus the eight supplied band photographs listed in the user brief.
-- Combined comparison: `qa-combined-comparison.png` (1440 × 2582 px).
-- Desktop implementation: `qa-live-stage-desktop.png`, `qa-ensemble-portraits-desktop.png`, and `qa-ensemble-group-caption-desktop.png` (1440 × 900 px; CSS viewport 1440 × 900; device scale 1).
-- Mobile implementation: `qa-live-stage-mobile.png`, `qa-ensemble-mobile.png`, and `qa-ensemble-mobile-group.png` (390 × 844 px; CSS viewport 390 × 844; device scale 1).
+- Combined comparison: `design-qa/ensemble/qa-combined-comparison.png` (1440 × 2582 px).
+- Desktop implementation: `design-qa/ensemble/qa-live-stage-desktop.png`, `design-qa/ensemble/qa-ensemble-portraits-desktop.png`, and `design-qa/ensemble/qa-ensemble-group-caption-desktop.png` (1440 × 900 px; CSS viewport 1440 × 900; device scale 1).
+- Mobile implementation: `design-qa/ensemble/qa-live-stage-mobile.png`, `design-qa/ensemble/qa-ensemble-mobile.png`, and `design-qa/ensemble/qa-ensemble-mobile-group.png` (390 × 844 px; CSS viewport 390 × 844; device scale 1).
 - State: live chapter, ensemble introduction, portrait constellation, and ensemble group image.
 
 ## Full-view comparison
@@ -30,7 +30,7 @@ The new sections retain the selected reference's charcoal ground, copper rules a
 
 1. Initial P2 finding: HTML source dimensions caused narrower portrait figures and the group image to retain fixed pixel heights, producing black blocks and excessive vertical space.
 2. Fix: added natural responsive height behavior and top alignment for each portrait figure.
-3. Post-fix evidence: `qa-ensemble-portraits-desktop.png` and `qa-ensemble-mobile.png` show natural aspect ratios, intentional stagger, no stretching, no broken images, and no horizontal overflow.
+3. Post-fix evidence: `design-qa/ensemble/qa-ensemble-portraits-desktop.png` and `design-qa/ensemble/qa-ensemble-mobile.png` show natural aspect ratios, intentional stagger, no stretching, no broken images, and no horizontal overflow.
 
 ## Findings
 
