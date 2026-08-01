@@ -59,6 +59,11 @@ const movements = [
   },
 ];
 
+const ensemblePortraits = Array.from({ length: 6 }, (_, index) => ({
+  number: String(index + 1).padStart(2, "0"),
+  src: `/assets/ensemble/portrait-${String(index + 1).padStart(2, "0")}.jpg`,
+}));
+
 function scrollToId(id) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 }
@@ -380,6 +385,14 @@ export function App() {
         </section>
 
         <section className="history-section" id="live" aria-labelledby="history-heading">
+          <img
+            className="history-image"
+            src="/assets/ensemble/arohana-live-stage.jpg"
+            alt="Arohana performing Jazz–Carnatic fusion together on stage"
+            width="2400"
+            height="1088"
+            loading="lazy"
+          />
           <div className="history-content">
             <span className="eyebrow">First chapter · 2023</span>
             <h2 id="history-heading">Harmonizing Cultures</h2>
@@ -395,16 +408,46 @@ export function App() {
         </section>
 
         <section className="artists-section" id="artists" aria-labelledby="artists-heading">
-          <span className="section-index">04 / 05</span>
-          <div>
-            <span className="eyebrow">The ensemble</span>
-            <h2 id="artists-heading">Individual voices. A shared musical instinct.</h2>
+          <div className="artists-intro">
+            <span className="section-index">04 / 05</span>
+            <div>
+              <span className="eyebrow">The ensemble</span>
+              <h2 id="artists-heading">Individual voices. A shared musical instinct.</h2>
+            </div>
+            <p>
+              Six musicians, one evolving language. Each Arohana performance is shaped by
+              artists fluent in disciplined tradition and the freedom of improvisation.
+            </p>
           </div>
-          <p>
-            Each Arohana performance is shaped by musicians fluent in both disciplined
-            tradition and the art of letting go. Artist portraits and individual profiles
-            will join this chapter in the next content release.
-          </p>
+
+          <div className="portrait-constellation" aria-label="Arohana ensemble portraits">
+            {ensemblePortraits.map((portrait, index) => (
+              <figure className={`ensemble-portrait ensemble-portrait--${index + 1}`} key={portrait.src}>
+                <img
+                  src={portrait.src}
+                  alt={`Arohana ensemble member portrait ${index + 1}`}
+                  width="720"
+                  height="900"
+                  loading="lazy"
+                />
+                <figcaption aria-hidden="true">{portrait.number}</figcaption>
+              </figure>
+            ))}
+          </div>
+
+          <figure className="ensemble-together">
+            <img
+              src="/assets/ensemble/arohana-ensemble-together.jpg"
+              alt="Arohana musicians and collaborators together on stage"
+              width="1800"
+              height="1200"
+              loading="lazy"
+            />
+            <figcaption>
+              <span>Together, after the final note</span>
+              <small>Arohana · Aotearoa New Zealand</small>
+            </figcaption>
+          </figure>
         </section>
 
         <section className="instrument-section" aria-labelledby="instrument-heading">

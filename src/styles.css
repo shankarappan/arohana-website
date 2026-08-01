@@ -764,22 +764,46 @@ footer button:focus-visible {
 
 .history-section {
   position: relative;
-  min-height: 380px;
+  min-height: clamp(520px, 58vw, 780px);
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  overflow: hidden;
   padding: 80px clamp(24px, 7vw, 118px);
   background-color: #090a0b;
-  background-image: url("/assets/mridangam-banner.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   border-bottom: 1px solid var(--line-soft);
+}
+
+.history-section::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    linear-gradient(90deg, rgba(2, 3, 4, 0.92) 0%, rgba(2, 3, 4, 0.48) 42%, rgba(2, 3, 4, 0.06) 72%),
+    linear-gradient(0deg, rgba(2, 3, 4, 0.88) 0%, transparent 54%);
+  pointer-events: none;
+}
+
+.history-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.78) contrast(1.08);
+  transition: transform 1200ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.history-section:hover .history-image {
+  transform: scale(1.015);
 }
 
 .history-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   max-width: 560px;
+  padding: clamp(24px, 4vw, 48px) 0 0 clamp(22px, 3vw, 42px);
+  border-left: 1px solid rgba(232, 164, 110, 0.62);
 }
 
 .history-section h2 {
@@ -796,16 +820,22 @@ footer button:focus-visible {
 }
 
 .artists-section {
-  display: grid;
-  grid-template-columns: 120px minmax(0, 1.25fr) minmax(280px, 0.65fr);
-  gap: clamp(40px, 7vw, 110px);
-  align-items: end;
-  padding: 96px clamp(24px, 7vw, 118px);
+  position: relative;
+  overflow: hidden;
+  padding: 110px clamp(24px, 7vw, 118px) 120px;
   background: var(--ink-lift);
   border-bottom: 1px solid var(--line-soft);
 }
 
-.artists-section .section-index {
+.artists-intro {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1.25fr) minmax(280px, 0.65fr);
+  gap: clamp(40px, 7vw, 110px);
+  align-items: end;
+  margin-bottom: clamp(70px, 8vw, 120px);
+}
+
+.artists-intro .section-index {
   margin: 0;
 }
 
@@ -816,11 +846,115 @@ footer button:focus-visible {
   line-height: 0.93;
 }
 
-.artists-section > p {
+.artists-intro > p {
   margin: 0;
   color: rgba(241, 236, 229, 0.64);
   font-size: 14px;
   line-height: 1.8;
+}
+
+.portrait-constellation {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, auto));
+  gap: clamp(12px, 1.5vw, 24px);
+  margin-bottom: clamp(90px, 10vw, 150px);
+}
+
+.ensemble-portrait {
+  position: relative;
+  align-self: start;
+  overflow: hidden;
+  margin: 0;
+  background: #0b0c0d;
+}
+
+.ensemble-portrait--1 { grid-column: 1 / span 4; grid-row: 1; }
+.ensemble-portrait--2 { grid-column: 5 / span 3; grid-row: 1; margin-top: 15%; }
+.ensemble-portrait--3 { grid-column: 8 / span 5; grid-row: 1; }
+.ensemble-portrait--4 { grid-column: 1 / span 5; grid-row: 2; margin-top: -6%; }
+.ensemble-portrait--5 { grid-column: 6 / span 3; grid-row: 2; margin-top: 18%; }
+.ensemble-portrait--6 { grid-column: 9 / span 4; grid-row: 2; margin-top: -10%; }
+
+.ensemble-portrait::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  border: 1px solid rgba(232, 164, 110, 0.12);
+  background: linear-gradient(0deg, rgba(3, 4, 4, 0.36), transparent 46%);
+  pointer-events: none;
+}
+
+.ensemble-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  filter: saturate(0.82) contrast(1.04);
+  transition: transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1), filter 500ms ease;
+}
+
+.ensemble-portrait figcaption {
+  position: absolute;
+  z-index: 2;
+  right: 18px;
+  bottom: 16px;
+  color: rgba(232, 164, 110, 0.8);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+}
+
+.ensemble-portrait:hover img {
+  transform: scale(1.025);
+  filter: saturate(1) contrast(1.04);
+}
+
+.ensemble-together {
+  position: relative;
+  width: min(1180px, 92%);
+  margin: 0 0 0 auto;
+}
+
+.ensemble-together::before {
+  position: absolute;
+  top: -34px;
+  right: 0;
+  width: 58%;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(232, 164, 110, 0.62));
+}
+
+.ensemble-together img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: center 44%;
+  filter: saturate(0.84) contrast(1.04);
+}
+
+.ensemble-together figcaption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px 0 0 clamp(18px, 3vw, 40px);
+  border-left: 1px solid rgba(232, 164, 110, 0.48);
+}
+
+.ensemble-together figcaption span {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(25px, 2.5vw, 38px);
+}
+
+.ensemble-together figcaption small {
+  color: rgba(241, 236, 229, 0.5);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .instrument-section {
@@ -1211,10 +1345,14 @@ footer button {
   }
 
   .artists-section {
+    padding-inline: clamp(24px, 5vw, 64px);
+  }
+
+  .artists-intro {
     grid-template-columns: 80px 1fr;
   }
 
-  .artists-section > p {
+  .artists-intro > p {
     grid-column: 2;
   }
 
@@ -1353,22 +1491,72 @@ footer button {
     min-height: 610px;
     align-items: flex-end;
     padding: 72px 22px;
-    background-position: 65% center;
+  }
+
+  .history-section::after {
+    background:
+      linear-gradient(0deg, rgba(2, 3, 4, 0.94) 0%, rgba(2, 3, 4, 0.42) 64%, rgba(2, 3, 4, 0.08) 100%);
+  }
+
+  .history-image {
+    object-position: 48% center;
   }
 
   .history-content {
     padding: 26px;
     background: rgba(7, 8, 8, 0.86);
+    border-left-color: rgba(232, 164, 110, 0.55);
   }
 
   .artists-section {
-    grid-template-columns: 1fr;
-    gap: 38px;
-    padding: 86px 22px;
+    padding: 86px 22px 96px;
   }
 
-  .artists-section > p {
+  .artists-intro {
+    grid-template-columns: 1fr;
+    gap: 38px;
+    margin-bottom: 66px;
+  }
+
+  .artists-intro > p {
     grid-column: auto;
+  }
+
+  .portrait-constellation {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto;
+    gap: 10px;
+    margin-bottom: 86px;
+  }
+
+  .ensemble-portrait--1,
+  .ensemble-portrait--2,
+  .ensemble-portrait--3,
+  .ensemble-portrait--4,
+  .ensemble-portrait--5,
+  .ensemble-portrait--6 {
+    grid-column: auto;
+    grid-row: auto;
+    margin-top: 0;
+  }
+
+  .ensemble-portrait:nth-child(even) {
+    transform: translateY(24px);
+  }
+
+  .ensemble-portrait figcaption {
+    right: 12px;
+    bottom: 10px;
+  }
+
+  .ensemble-together {
+    width: 100%;
+  }
+
+  .ensemble-together figcaption {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
   }
 
   .instrument-section {

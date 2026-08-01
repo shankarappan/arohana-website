@@ -1,54 +1,51 @@
-# Arohana Design QA
-
-- Source of truth: `/Users/shankar/Documents/Arohana Website/design-reference/option-1.png`
-- Source dimensions: 864 × 1821 px
-- Implementation URL: `http://localhost:4173/`
-- Desktop viewport: 1440 × 1000 CSS px, device scale factor 1
-- Mobile viewport: 390 × 844 CSS px, device scale factor 1
-- State tested: default homepage, mobile navigation, audio disclosure, booking modal, booking success state
+# Arohana ensemble integration — design QA
 
 ## Evidence
 
-- Full-page comparison board: `/Users/shankar/Documents/Arohana Website/design-qa/compare.html`
-- Combined comparison capture: `/Users/shankar/Documents/Arohana Website/design-qa/compare-clip-2-final.jpg`
-- Final desktop hero: `/Users/shankar/Documents/Arohana Website/design-qa/implementation-desktop-hero-final-blended.png`
-- Desktop page sections:
-  - `/Users/shankar/Documents/Arohana Website/design-qa/implementation-section-a.png`
-  - `/Users/shankar/Documents/Arohana Website/design-qa/implementation-section-b.png`
-  - `/Users/shankar/Documents/Arohana Website/design-qa/implementation-section-c.png`
-- Mobile evidence: `/Users/shankar/Documents/Arohana Website/design-qa/implementation-mobile-pass1.png`
-- Seamless title, desktop: `/Users/shankar/Documents/Arohana Website/design-qa/title-seamless-final.png`
-- Seamless title, mobile: `/Users/shankar/Documents/Arohana Website/design-qa/title-seamless-mobile-final.png`
-- Jazz instrument section, desktop: `/Users/shankar/Documents/Arohana Website/design-qa/instrument-section-desktop.png`
-- Jazz instrument section, mobile: `/Users/shankar/Documents/Arohana Website/design-qa/instrument-section-mobile-final.png`
-- Bass guitar and Miruthangam update, desktop: `/Users/shankar/Documents/Arohana Website/design-qa/instrument-section-v2-desktop.png`
-- Bass guitar and Miruthangam update, mobile: `/Users/shankar/Documents/Arohana Website/design-qa/instrument-section-v2-mobile.png`
-- Three-movement visual redesign, desktop: `/Users/shankar/Documents/Arohana Website/design-qa/movement-section-redesign-desktop.png`
-- Three-movement visual redesign, mobile: `/Users/shankar/Documents/Arohana Website/design-qa/movement-section-redesign-mobile.png`
+- Source visual truth: `design-reference/option-1.png` (864 × 1821 px), plus the eight supplied band photographs listed in the user brief.
+- Combined comparison: `qa-combined-comparison.png` (1440 × 2582 px).
+- Desktop implementation: `qa-live-stage-desktop.png`, `qa-ensemble-portraits-desktop.png`, and `qa-ensemble-group-caption-desktop.png` (1440 × 900 px; CSS viewport 1440 × 900; device scale 1).
+- Mobile implementation: `qa-live-stage-mobile.png`, `qa-ensemble-mobile.png`, and `qa-ensemble-mobile-group.png` (390 × 844 px; CSS viewport 390 × 844; device scale 1).
+- State: live chapter, ensemble introduction, portrait constellation, and ensemble group image.
 
-The browser's full-page stitching duplicated fixed and viewport-bound elements, so the full implementation was captured as three bounded, contiguous desktop viewports and rendered together in the comparison board. The focused hero comparison uses a normal viewport capture.
+## Full-view comparison
 
-## Fidelity review
+The new sections retain the selected reference's charcoal ground, copper rules and labels, editorial Cormorant display typography, compact Manrope supporting copy, restrained image grading, and generous negative space. The live panorama is treated as full-bleed stage photography with a dark editorial text veil. The portrait section extends the established language rather than introducing card UI, borders, rounded corners, or a new palette.
 
-- Typography: passed. Cormorant Garamond and Manrope reproduce the editorial serif/sans-serif contrast in the selected direction.
-- Layout and spacing: passed. The hero hierarchy, two-line statement, audio deck, story rhythm, three-part philosophy, and booking close match the source. The implementation includes an intentional ensemble content section to support the supplied band brief and future artist profiles.
-- Colour: passed. Charcoal, warm ivory, copper, and muted bronze remain consistent across all sections.
-- Assets: passed. Purpose-made instrument photography and contour textures follow the reference direction. The supplied raster wordmark retains its original dark background; screen blending minimizes its edge until a transparent master logo is supplied.
-- Instrument coverage: passed. Grand piano, saxophone, jazz drum kit, bass guitar, violin, and Miruthangam are all clearly visible and named. The mobile breakpoint preserves the full ensemble panorama instead of cropping either edge instrument.
-- Copy: passed. The site preserves the confirmed 2023 Harmonizing Cultures debut and does not present WOMEX 2025 as an upcoming event.
-- Responsive behaviour: passed. Navigation changes to a mobile menu, content stacks without clipping, touch controls remain legible, and reduced-motion preferences are respected.
-- Accessibility: passed. Semantic regions, labelled controls, visible keyboard focus, modal isolation, and reduced-motion handling are present.
-- Browser console: passed. No application errors were observed.
+## Focused region comparison
+
+- Live chapter: the supplied 7008 × 3178 stage image remains sharp after web optimization and preserves all six visible performers at desktop width. The mobile crop prioritizes the Carnatic centre of the ensemble while retaining the stage atmosphere.
+- Portraits: all six supplied 4:5 portraits preserve their original framing and facial detail. Staggered scale creates hierarchy without cropping faces or changing the source backgrounds.
+- Group photograph: the full ensemble remains visible on desktop and mobile. The mobile presentation intentionally preserves the complete group rather than using a tighter crop that would remove people.
+
+## Required fidelity surfaces
+
+- Fonts and typography: passed. Existing Cormorant Garamond and Manrope hierarchy, weights, line heights, and small-label tracking are preserved.
+- Spacing and layout rhythm: passed after one correction. Desktop negative space is intentional and mobile uses a stable two-column rhythm with no horizontal overflow.
+- Colors and visual tokens: passed. Existing ink, paper, muted copy, copper accents, borders, and overlay opacity are reused.
+- Image quality and asset fidelity: passed. All eight supplied photographs load, use appropriate responsive sizing, preserve faces, and remain free of stretching or broken assets.
+- Copy and content: passed. No artist names or roles were invented; the section clearly identifies six musicians and leaves individual profiles for supplied content.
 
 ## Comparison history
 
-1. Initial comparison found P2 issues: the desktop hero statement wrapped to three lines, the hidden mobile menu remained exposed to assistive technology, opening booking from the mobile menu left the menu active, and lower sections were too vertically loose.
-2. Fixes applied: widened and stabilized the desktop hero headline, added menu visibility and `aria-hidden` handling, centralized booking opening so the menu closes first, isolated background regions while overlays are open, and tightened section spacing.
-3. Post-fix comparison found no remaining P0, P1, or P2 issues. The supplied wordmark's embedded background is a P3 source-asset limitation and does not block release.
+1. Initial P2 finding: HTML source dimensions caused narrower portrait figures and the group image to retain fixed pixel heights, producing black blocks and excessive vertical space.
+2. Fix: added natural responsive height behavior and top alignment for each portrait figure.
+3. Post-fix evidence: `qa-ensemble-portraits-desktop.png` and `qa-ensemble-mobile.png` show natural aspect ratios, intentional stagger, no stretching, no broken images, and no horizontal overflow.
+
+## Findings
+
+No actionable P0, P1, or P2 findings remain.
+
+## Follow-up polish
+
+- P3: individual names, instruments, and profiles can be layered into the portrait sequence once the band supplies verified content.
 
 ## Verification
 
-- `npm run build`: passed
-- `npm run test:sites`: passed, 4/4 tests
+- Primary navigation jumps to Live and Artists were tested on desktop and mobile.
+- Mobile menu open/close and section navigation were tested.
+- All eight new images loaded successfully.
+- No browser console errors or warnings were present.
+- Production build and hosting tests passed.
 
-Final result: passed
+final result: passed
