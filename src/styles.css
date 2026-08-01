@@ -373,11 +373,14 @@ footer button:focus-visible {
   bottom: 34px;
   left: clamp(24px, 4vw, 66px);
   display: grid;
-  grid-template-columns: 52px minmax(170px, 320px) 1fr 24px;
-  gap: 18px;
+  grid-template-areas:
+    "intro tracks"
+    "intro transport";
+  grid-template-columns: minmax(190px, 250px) 1fr;
+  gap: 10px 26px;
   align-items: center;
-  min-height: 96px;
-  padding: 16px 24px;
+  min-height: 132px;
+  padding: 18px 22px;
   border: 1px solid rgba(232, 164, 110, 0.28);
   border-radius: 14px;
   background: rgba(11, 12, 13, 0.93);
@@ -385,64 +388,125 @@ footer button:focus-visible {
   backdrop-filter: blur(14px);
 }
 
-.play-button {
-  display: grid;
-  width: 48px;
-  height: 48px;
-  padding: 0;
-  place-items: center;
-  border: 0;
-  border-radius: 50%;
-  background: var(--copper);
-  color: #17100c;
-  cursor: pointer;
+.audio-intro {
+  grid-area: intro;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
 }
 
-.track-copy {
+.audio-intro > svg {
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  color: var(--copper);
+}
+
+.audio-intro div {
   display: flex;
+  min-width: 0;
   flex-direction: column;
   gap: 4px;
 }
 
-.track-copy span,
-.track-copy small {
-  color: var(--muted);
-  font-size: 10px;
-  line-height: 1.4;
-}
-
-.track-copy span {
+.audio-intro span {
   color: var(--copper-bright);
+  font-size: 9px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
-.track-copy strong {
+.audio-intro strong {
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 500;
 }
 
-.track-line {
-  display: flex;
+.audio-track-list {
+  grid-area: tracks;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.audio-track {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+  gap: 10px;
   align-items: center;
-  gap: 16px;
-  color: var(--copper);
+  min-width: 0;
+  min-height: 46px;
+  padding: 6px 10px 6px 6px;
+  border: 1px solid rgba(241, 236, 229, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--paper);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 180ms ease, background-color 180ms ease;
 }
 
-.track-line svg {
-  width: 150px;
-  height: 42px;
+.audio-track:hover,
+.audio-track:focus-visible,
+.audio-track.is-active {
+  border-color: rgba(232, 164, 110, 0.55);
+  background: rgba(232, 164, 110, 0.08);
 }
 
-.track-line i {
-  width: 100%;
-  height: 1px;
-  background: rgba(241, 236, 229, 0.2);
+.track-play-icon {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--copper);
+  color: #17100c;
 }
 
-.speaker-icon {
+.track-play-icon svg {
+  width: 13px;
+  height: 13px;
+}
+
+.track-title {
+  overflow: hidden;
+  font-size: 12px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.audio-track small,
+.audio-transport span {
   color: var(--muted);
+  font-size: 9px;
+}
+
+.audio-transport {
+  grid-area: transport;
+  display: grid;
+  grid-template-columns: 32px minmax(90px, 1fr) 38px 18px;
+  gap: 9px;
+  align-items: center;
+}
+
+.audio-transport input {
+  width: 100%;
+  height: 14px;
+  margin: 0;
+  accent-color: var(--copper-bright);
+  cursor: pointer;
+}
+
+.audio-transport svg {
+  width: 16px;
+  height: 16px;
+  color: var(--muted);
+}
+
+.audio-deck audio {
+  display: none;
 }
 
 .story-section {
@@ -1207,17 +1271,33 @@ footer button {
     right: 18px;
     bottom: 20px;
     left: 18px;
-    grid-template-columns: 48px 1fr 20px;
-    min-height: 108px;
-    padding: 14px;
+    display: flex;
+    min-height: 0;
+    padding: 15px;
+    flex-direction: column;
+    gap: 12px;
   }
 
-  .track-line {
-    display: none;
+  .audio-intro {
+    width: 100%;
   }
 
-  .track-copy strong {
-    font-size: 17px;
+  .audio-track-list {
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .audio-track {
+    min-height: 44px;
+  }
+
+  .track-title {
+    font-size: 11px;
+  }
+
+  .audio-transport {
+    width: 100%;
   }
 
   .story-section {

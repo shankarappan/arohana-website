@@ -1,3 +1,8 @@
 # Audio assets
 
-Future Arohana song files can be stored here. Use web-ready filenames such as `raga-in-blue.mp3`, keep original masters outside the repository, and add title/credit metadata in the website interface.
+Public listening tracks:
+
+- `rasika-arohana-original.mp3` — Rasika - Arohana Original
+- `madras-mail-arohana-original.mp3` — Madras Mail - Arohana Original
+
+Keep original masters outside the public repository. Website audio should use web-ready filenames and metadata-only preloading.

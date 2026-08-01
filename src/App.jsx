@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowDown,
   ArrowRight,
@@ -17,6 +17,25 @@ const navItems = [
   ["Artists", "artists"],
   ["Contact", "contact"],
 ];
+
+const tracks = [
+  {
+    title: "Rasika - Arohana Original",
+    src: "/audio/rasika-arohana-original.mp3",
+    duration: 636,
+  },
+  {
+    title: "Madras Mail - Arohana Original",
+    src: "/audio/madras-mail-arohana-original.mp3",
+    duration: 516,
+  },
+];
+
+function formatTime(seconds) {
+  if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
+  const minutes = Math.floor(seconds / 60);
+  return `${minutes}:${Math.floor(seconds % 60).toString().padStart(2, "0")}`;
+}
 
 const movements = [
   {
@@ -75,10 +94,14 @@ function MovementVisual({ type }) {
 
 export function App() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [audioOpen, setAudioOpen] = useState(false);
+  const [activeTrackIndex, setActiveTrackIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(tracks[0].duration);
   const [bookingOpen, setBookingOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const audioRef = useRef(null);
 
   useEffect(() => {
     const updateProgress = () => {
@@ -101,6 +124,13 @@ export function App() {
     return () => window.removeEventListener("keydown", closeOnEscape);
   }, []);
 
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.src = tracks[0].src;
+    audio.load();
+  }, []);
+
   const handleNav = (id) => {
     setMenuOpen(false);
     scrollToId(id);
@@ -114,6 +144,37 @@ export function App() {
   const handleSubmit = (event) => {
     event.preventDefault();
     setSubmitted(true);
+  };
+
+  const toggleTrack = async (index) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (index !== activeTrackIndex) {
+      setActiveTrackIndex(index);
+      setCurrentTime(0);
+      setDuration(tracks[index].duration);
+      audio.src = tracks[index].src;
+      audio.load();
+    }
+
+    if (index === activeTrackIndex && !audio.paused) {
+      audio.pause();
+      return;
+    }
+
+    try {
+      await audio.play();
+    } catch {
+      setIsPlaying(false);
+    }
+  };
+
+  const seekTrack = (event) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.currentTime = Number(event.target.value);
+    setCurrentTime(audio.currentTime);
   };
 
   return (
@@ -208,25 +269,64 @@ export function App() {
             Scroll to discover <ArrowDown weight="light" />
           </button>
 
-          <div className={`audio-deck ${audioOpen ? "is-open" : ""}`} id="music">
-            <button
-              className="play-button"
-              onClick={() => setAudioOpen((value) => !value)}
-              aria-pressed={audioOpen}
-              aria-label={audioOpen ? "Close audio preview details" : "Open audio preview details"}
-            >
-              {audioOpen ? <Pause weight="fill" /> : <Play weight="fill" />}
-            </button>
-            <div className="track-copy">
-              <span>Featured listening</span>
-              <strong>Raga in Blue — Live Session</strong>
-              <small>{audioOpen ? "Master recording will be added in the next content pass" : "Arohana"}</small>
+          <div className="audio-deck" id="music" aria-label="Listen to Arohana originals">
+            <div className="audio-intro">
+              <Waveform weight="thin" aria-hidden="true" />
+              <div>
+                <span>Featured listening</span>
+                <strong>Two Arohana originals</strong>
+              </div>
             </div>
-            <div className="track-line" aria-hidden="true">
-              <Waveform weight="thin" />
-              <i />
+
+            <div className="audio-track-list">
+              {tracks.map((track, index) => {
+                const active = activeTrackIndex === index;
+                const playing = active && isPlaying;
+                return (
+                  <button
+                    className={`audio-track ${active ? "is-active" : ""}`}
+                    key={track.src}
+                    onClick={() => toggleTrack(index)}
+                    aria-pressed={playing}
+                    aria-label={`${playing ? "Pause" : "Play"} ${track.title}`}
+                  >
+                    <span className="track-play-icon" aria-hidden="true">
+                      {playing ? <Pause weight="fill" /> : <Play weight="fill" />}
+                    </span>
+                    <span className="track-title">{track.title}</span>
+                    <small>{formatTime(track.duration)}</small>
+                  </button>
+                );
+              })}
             </div>
-            <SpeakerHigh className="speaker-icon" weight="light" aria-hidden="true" />
+
+            <div className="audio-transport">
+              <span>{formatTime(currentTime)}</span>
+              <input
+                type="range"
+                min="0"
+                max={duration || tracks[activeTrackIndex].duration}
+                step="0.1"
+                value={Math.min(currentTime, duration || tracks[activeTrackIndex].duration)}
+                onChange={seekTrack}
+                aria-label={`Seek ${tracks[activeTrackIndex].title}`}
+              />
+              <span>{formatTime(duration || tracks[activeTrackIndex].duration)}</span>
+              <SpeakerHigh weight="light" aria-hidden="true" />
+            </div>
+
+            <audio
+              ref={audioRef}
+              preload="metadata"
+              onLoadedMetadata={(event) => setDuration(event.currentTarget.duration)}
+              onTimeUpdate={(event) => setCurrentTime(event.currentTarget.currentTime)}
+              onPlay={() => setIsPlaying(true)}
+              onPause={() => setIsPlaying(false)}
+              onEnded={() => {
+                setIsPlaying(false);
+                setCurrentTime(0);
+              }}
+            />
           </div>
         </section>
 

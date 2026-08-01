@@ -14,7 +14,8 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Preserve the cinematic charcoal-and-copper art direction, editorial serif display type, tactile instrument photography, restrained motion, and clear listen/booking pathways.
 - Keep the full Arohana title mark prominent in the hero while preserving breathing room around the editorial headline.
 - On mobile, center the hero title mark independently of the left-aligned hero copy and its padded content column.
-- Artist portraits, individual profiles, final audio masters, and social URLs are intentionally deferred until the band supplies them.
+- Artist portraits, individual profiles, and social URLs are intentionally deferred until the band supplies them.
+- The public listening section contains only `Rasika - Arohana Original` and `Madras Mail - Arohana Original` unless the band requests another release.
 - Use `info@arohana.nz` for public booking enquiries.
 - Treat WOMEX 2025 as a past date, not an upcoming event.
 - The public source repository is `https://github.com/shankarappan/arohana-website`.
