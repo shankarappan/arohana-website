@@ -897,37 +897,46 @@ footer button:focus-visible {
 
 .ensemble-together {
   position: relative;
-  width: min(1180px, 92%);
-  margin: 0 0 0 auto;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  aspect-ratio: 21 / 9;
+  border-top: 1px solid rgba(232, 164, 110, 0.34);
+  border-bottom: 1px solid rgba(232, 164, 110, 0.22);
+  background: #080909;
 }
 
 .ensemble-together::before {
   position: absolute;
-  top: -34px;
-  right: 0;
-  width: 58%;
-  height: 1px;
+  z-index: 1;
+  inset: 34% 0 0;
   content: "";
-  background: linear-gradient(90deg, transparent, rgba(232, 164, 110, 0.62));
+  pointer-events: none;
+  background: linear-gradient(0deg, rgba(3, 4, 4, 0.88), rgba(3, 4, 4, 0.08) 72%, transparent);
 }
 
 .ensemble-together img {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
-  height: auto;
-  aspect-ratio: 3 / 2;
+  height: 100%;
   object-fit: cover;
-  object-position: center 44%;
-  filter: saturate(0.84) contrast(1.04);
+  object-position: center 64%;
+  filter: saturate(0.82) contrast(1.06);
 }
 
 .ensemble-together figcaption {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 24px;
-  padding: 18px 0 0 clamp(18px, 3vw, 40px);
-  border-left: 1px solid rgba(232, 164, 110, 0.48);
+  padding: clamp(24px, 3vw, 42px) clamp(22px, 4vw, 64px);
 }
 
 .ensemble-together figcaption span {
@@ -1515,13 +1524,30 @@ footer button {
   }
 
   .ensemble-together {
+    overflow: visible;
     width: 100%;
+    aspect-ratio: auto;
+    border-bottom: 0;
+  }
+
+  .ensemble-together::before {
+    display: none;
+  }
+
+  .ensemble-together img {
+    position: relative;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-position: center;
   }
 
   .ensemble-together figcaption {
+    position: relative;
     align-items: flex-start;
     flex-direction: column;
     gap: 8px;
+    padding: 18px 0 0 18px;
+    border-left: 1px solid rgba(232, 164, 110, 0.48);
   }
 
   .instrument-section {
