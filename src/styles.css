@@ -1095,6 +1095,14 @@ footer button {
   margin-top: 8px;
 }
 
+.booking-delivery-note {
+  max-width: 520px;
+  margin: -2px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
 .success-message {
   min-height: 360px;
   display: flex;

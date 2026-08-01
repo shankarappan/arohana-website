@@ -9,6 +9,7 @@ import {
   Waveform,
   X,
 } from "@phosphor-icons/react";
+import { buildBookingMailto } from "./booking-email.js";
 
 const navItems = [
   ["Story", "story"],
@@ -99,7 +100,6 @@ export function App() {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(tracks[0].duration);
   const [bookingOpen, setBookingOpen] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const audioRef = useRef(null);
 
@@ -143,7 +143,12 @@ export function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setSubmitted(true);
+    const form = new FormData(event.currentTarget);
+    window.location.href = buildBookingMailto({
+      name: form.get("name")?.toString(),
+      email: form.get("email")?.toString(),
+      message: form.get("message")?.toString(),
+    });
   };
 
   const toggleTrack = async (index) => {
@@ -436,7 +441,10 @@ export function App() {
             <p>
               Let’s create an unforgettable musical journey for your audience.
             </p>
-            <a className="booking-email" href="mailto:info@arohana.nz">
+            <a
+              className="booking-email"
+              href="mailto:info@arohana.nz?subject=Arohana%20booking%20enquiry"
+            >
               <span>Booking enquiries</span>
               info@arohana.nz
             </a>
@@ -472,50 +480,32 @@ export function App() {
             >
               <X />
             </button>
-            {submitted ? (
-              <div className="success-message" aria-live="polite">
-                <span className="eyebrow">Enquiry prepared</span>
-                <h2 id="booking-modal-title">Thank you.</h2>
-                <p>
-                  This prototype has captured your message locally. A delivery email will
-                  be connected when Arohana supplies its preferred booking address.
-                </p>
-                <button
-                  className="primary-action"
-                  onClick={() => {
-                    setSubmitted(false);
-                    setBookingOpen(false);
-                  }}
-                >
-                  Close
-                </button>
-              </div>
-            ) : (
-              <>
-                <span className="eyebrow">Booking enquiry</span>
-                <h2 id="booking-modal-title">Let’s make something resonate.</h2>
-                <p>
-                  Tell us a little about your festival, venue or collaboration.
-                </p>
-                <form onSubmit={handleSubmit}>
-                  <label>
-                    Your name
-                    <input name="name" autoComplete="name" required />
-                  </label>
-                  <label>
-                    Email
-                    <input name="email" type="email" autoComplete="email" required />
-                  </label>
-                  <label>
-                    Event or idea
-                    <textarea name="message" rows="4" required />
-                  </label>
-                  <button className="primary-action" type="submit">
-                    Prepare enquiry <ArrowRight weight="light" />
-                  </button>
-                </form>
-              </>
-            )}
+            <span className="eyebrow">Booking enquiry</span>
+            <h2 id="booking-modal-title">Let’s make something resonate.</h2>
+            <p>
+              Tell us a little about your festival, venue or collaboration.
+            </p>
+            <form onSubmit={handleSubmit}>
+              <label>
+                Your name
+                <input name="name" autoComplete="name" required />
+              </label>
+              <label>
+                Email
+                <input name="email" type="email" autoComplete="email" required />
+              </label>
+              <label>
+                Event or idea
+                <textarea name="message" rows="4" required />
+              </label>
+              <p className="booking-delivery-note">
+                Your email app will open with this enquiry addressed to info@arohana.nz.
+                Review it, then press Send to deliver it to Arohana.
+              </p>
+              <button className="primary-action" type="submit">
+                Open email to send <ArrowRight weight="light" />
+              </button>
+            </form>
           </section>
         </div>
       )}
