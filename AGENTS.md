@@ -15,6 +15,7 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Keep the full Arohana title mark prominent in the hero while preserving breathing room around the editorial headline.
 - On mobile, center the hero title mark independently of the left-aligned hero copy and its padded content column.
 - Six artist portraits, a live stage panorama, and an ensemble group photograph are supplied and should be integrated as an editorial, image-led ensemble story; individual names, profiles, and social URLs remain deferred until the band supplies them.
+- Present individual artist portraits with equal visual weight in a clean aligned grid; avoid staggered spreads, arbitrary size differences, and numbers overlaid on portraits.
 - The public listening section contains only `Rasika - Arohana Original` and `Madras Mail - Arohana Original` unless the band requests another release.
 - Use `info@arohana.nz` for public booking enquiries.
 - Every website enquiry action must address `info@arohana.nz`; the static-site booking form opens a pre-filled message in the visitor's email app and must never show a false local-success state.

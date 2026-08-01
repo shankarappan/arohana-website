@@ -2,35 +2,35 @@
 
 ## Evidence
 
-- Source visual truth: `design-reference/option-1.png` (864 × 1821 px), plus the eight supplied band photographs listed in the user brief.
-- Combined comparison: `design-qa/ensemble/qa-combined-comparison.png` (1440 × 2582 px).
-- Desktop implementation: `design-qa/ensemble/qa-live-stage-desktop.png`, `design-qa/ensemble/qa-ensemble-portraits-desktop.png`, and `design-qa/ensemble/qa-ensemble-group-caption-desktop.png` (1440 × 900 px; CSS viewport 1440 × 900; device scale 1).
-- Mobile implementation: `design-qa/ensemble/qa-live-stage-mobile.png`, `design-qa/ensemble/qa-ensemble-mobile.png`, and `design-qa/ensemble/qa-ensemble-mobile-group.png` (390 × 844 px; CSS viewport 390 × 844; device scale 1).
-- State: live chapter, ensemble introduction, portrait constellation, and ensemble group image.
+- Source visual truth: the user's annotated portrait-layout screenshot (2872 × 1636 px), `design-reference/option-1.png` (864 × 1821 px), and the six supplied portrait sources.
+- Combined before/after comparison: `design-qa/ensemble/qa-contact-sheet-comparison.png` (1440 × 900 px).
+- Desktop implementation: `design-qa/ensemble/qa-contact-sheet-desktop.png` and `design-qa/ensemble/qa-contact-sheet-grid-desktop.png` (1440 × 900 px; CSS viewport 1440 × 900; device scale 1).
+- Mobile implementation: `design-qa/ensemble/qa-contact-sheet-mobile.png` (390 × 844 px; CSS viewport 390 × 844; device scale 1).
+- State: ensemble introduction and complete six-portrait contact sheet; the accepted live chapter and group image remain unchanged.
 
 ## Full-view comparison
 
-The new sections retain the selected reference's charcoal ground, copper rules and labels, editorial Cormorant display typography, compact Manrope supporting copy, restrained image grading, and generous negative space. The live panorama is treated as full-bleed stage photography with a dark editorial text veil. The portrait section extends the established language rather than introducing card UI, borders, rounded corners, or a new palette.
+The revised portrait section retains the selected reference's charcoal ground, copper rules, editorial typography, restrained image grading, and negative space. Replacing the irregular spread with a precise 3 × 2 contact sheet removes arbitrary hierarchy while keeping the section image-led and cinematic rather than turning it into conventional profile cards.
 
 ## Focused region comparison
 
-- Live chapter: the supplied 7008 × 3178 stage image remains sharp after web optimization and preserves all six visible performers at desktop width. The mobile crop prioritizes the Carnatic centre of the ensemble while retaining the stage atmosphere.
-- Portraits: all six supplied 4:5 portraits preserve their original framing and facial detail. Staggered scale creates hierarchy without cropping faces or changing the source backgrounds.
-- Group photograph: the full ensemble remains visible on desktop and mobile. The mobile presentation intentionally preserves the complete group rather than using a tighter crop that would remove people.
+- Portraits: all six supplied 4:5 portraits now have identical dimensions, crop rules, spacing, and visual weight. Faces remain fully visible and the overlaid numbers are removed.
+- Desktop: three equal columns and two aligned rows eliminate the irregular vertical spread and shorten the section substantially.
+- Mobile: two equal columns and three aligned rows preserve readable portrait size without horizontal overflow.
 
 ## Required fidelity surfaces
 
 - Fonts and typography: passed. Existing Cormorant Garamond and Manrope hierarchy, weights, line heights, and small-label tracking are preserved.
-- Spacing and layout rhythm: passed after one correction. Desktop negative space is intentional and mobile uses a stable two-column rhythm with no horizontal overflow.
+- Spacing and layout rhythm: passed. Desktop uses a precise 3 × 2 grid; mobile uses a compact 2 × 3 grid. There is no arbitrary offset, size difference, or horizontal overflow.
 - Colors and visual tokens: passed. Existing ink, paper, muted copy, copper accents, borders, and overlay opacity are reused.
 - Image quality and asset fidelity: passed. All eight supplied photographs load, use appropriate responsive sizing, preserve faces, and remain free of stretching or broken assets.
 - Copy and content: passed. No artist names or roles were invented; the section clearly identifies six musicians and leaves individual profiles for supplied content.
 
 ## Comparison history
 
-1. Initial P2 finding: HTML source dimensions caused narrower portrait figures and the group image to retain fixed pixel heights, producing black blocks and excessive vertical space.
-2. Fix: added natural responsive height behavior and top alignment for each portrait figure.
-3. Post-fix evidence: `design-qa/ensemble/qa-ensemble-portraits-desktop.png` and `design-qa/ensemble/qa-ensemble-mobile.png` show natural aspect ratios, intentional stagger, no stretching, no broken images, and no horizontal overflow.
+1. Initial P2 finding: the staggered portrait spread created excessive negative space, inconsistent visual weight, and an unintended ranking effect; overlaid numbers added visual noise.
+2. Fix: removed all portrait numbering and replaced the twelve-column stagger with an equal 3 × 2 desktop contact sheet and 2 × 3 mobile grid.
+3. Post-fix evidence: `design-qa/ensemble/qa-contact-sheet-comparison.png`, `design-qa/ensemble/qa-contact-sheet-grid-desktop.png`, and `design-qa/ensemble/qa-contact-sheet-mobile.png` show equal crops, aligned rows, consistent spacing, no numbering, no broken images, and no overflow.
 
 ## Findings
 

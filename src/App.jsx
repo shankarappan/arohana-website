@@ -59,10 +59,10 @@ const movements = [
   },
 ];
 
-const ensemblePortraits = Array.from({ length: 6 }, (_, index) => ({
-  number: String(index + 1).padStart(2, "0"),
-  src: `/assets/ensemble/portrait-${String(index + 1).padStart(2, "0")}.jpg`,
-}));
+const ensemblePortraits = Array.from(
+  { length: 6 },
+  (_, index) => `/assets/ensemble/portrait-${String(index + 1).padStart(2, "0")}.jpg`,
+);
 
 function scrollToId(id) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -422,15 +422,14 @@ export function App() {
 
           <div className="portrait-constellation" aria-label="Arohana ensemble portraits">
             {ensemblePortraits.map((portrait, index) => (
-              <figure className={`ensemble-portrait ensemble-portrait--${index + 1}`} key={portrait.src}>
+              <figure className="ensemble-portrait" key={portrait}>
                 <img
-                  src={portrait.src}
+                  src={portrait}
                   alt={`Arohana ensemble member portrait ${index + 1}`}
                   width="720"
                   height="900"
                   loading="lazy"
                 />
-                <figcaption aria-hidden="true">{portrait.number}</figcaption>
               </figure>
             ))}
           </div>
